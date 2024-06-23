@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:CoinFlip.ViewModels"
+             x:Class="CoinFlip.MainPage">
+
+    <ContentPage.BindingContext>
+        <local:CoinViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+            <Image
+                Source="{Binding ImageSource}"
+                HeightRequest="185"
+                Aspect="AspectFit" />
+
+            <Label
+                Text="{Binding ResultText}"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level1" />
+
+            <Picker
+                Title="Selecione sua escolha"
+                SelectedItem="{Binding SelectedChoice}">
+                <Picker.Items>
+                    <x:String>cara</x:String>
+                    <x:String>coroa</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <Button
+                Text="Jogar" 
+                SemanticProperties.Hint="clique para jogar"
+                Command="{Binding FlipCommand}"
+                HorizontalOptions="Fill" />
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
